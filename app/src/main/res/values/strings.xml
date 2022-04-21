@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">kinoline</string>
+    <string name="app_name" translatable="false">kinoline</string>
+    <string name="textview">KJGKDFJG</string>
+    <string name="buttonDetail">Detail</string>
+    <string name="button_add">Invite a friend</string>
+    <string name="checkBoxLikeFilm">like</string>
+    <string name="writeCommet">Add your commet</string>
+    <string name="buttonSaveDetail">Save</string>
 </resources>

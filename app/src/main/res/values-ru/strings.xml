@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textview">НАМАНА</string>
+    <string name="buttonDetail">Детали</string>
+    <string name="button_add">Пригласить друга</string>
+    <string name="checkBoxLikeFilm">Нравится</string>
+    <string name="writeCommet">Напишите свой комментарий</string>
+    <string name="buttonSaveDetail">Сохранить</string>
+</resources>
