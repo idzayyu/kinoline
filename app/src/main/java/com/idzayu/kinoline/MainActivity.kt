@@ -1,57 +1,39 @@
 package com.idzayu.kinoline
 
-import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.idzayu.kinoline.databinding.ActivityMainBinding
-import kotlin.math.log
 
 
-class MainActivity : AppCompatActivity() ,OnMovieDetailClickListener {
+class MainActivity : AppCompatActivity()  {
     lateinit var binding: ActivityMainBinding
-    private lateinit var start:
-            ActivityResultLauncher<Intent>
-    private val movieList = MovieList.getMovieList()
+    var  exitIssue = true
 
-    val movieAdapter = MovieAdapter(movieList, this)
-    private var dataComment = ""
-    var dataIsLike = false
-
-
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recyclerView.layoutManager = GridLayoutManager(this,1)
-        binding.recyclerView.adapter = movieAdapter
-        movieAdapter.notifyDataSetChanged()
+        val navView: BottomNavigationView = binding.navView
 
-        start = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
-            val data = result.data
-
-            if (result.resultCode == RESULT_OK && data != null){
-                dataComment = data.getStringExtra("comment").toString()
-                dataIsLike = data.getBooleanExtra("isLike", false)
-                val position = data.getIntExtra("position",0)
-
-                movieList[position].comment = dataComment
-
-                movieAdapter.notifyDataSetChanged()
-            }
-
-        }
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.filmListFragment, R.id.movieFavoriteFragment
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
 
     }
 
@@ -78,13 +60,16 @@ class MainActivity : AppCompatActivity() ,OnMovieDetailClickListener {
         return true
     }
 
-    override fun onMovieDetailClicked(position: Int) {
-        val intent = Intent(this, MovieDetail::class.java)
-        intent.putExtra("image",movieList[position].imageId)
-        intent.putExtra("position",position)
-        intent.putExtra("desc",movieList[position].description)
+    override fun onBackPressed() {
+        if (exitIssue){
+            exitIssue = false
+            Toast.makeText(applicationContext, "to exit, press again", Toast.LENGTH_LONG).show()
+        }
+        else{
+            super.onBackPressed()
+        }
 
-        start.launch(intent)
     }
+
 
 }
