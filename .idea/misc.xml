@@ -8,17 +8,38 @@
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/butos.xml" value="0.1945" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/custom_all.xml" value="0.1945" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/custom_button.xml" value="0.2995" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/divider_drawable.xml" value="0.1815" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1945" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1095" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1095" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1095" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/roundstyle.xml" value="0.2995" />
-        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/drawable/side_nav_bar.xml" value="0.1095" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout-land/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout-land/fragment_film_list.xml" value="0.15262321144674085" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/activity_main2.xml" value="0.15925925925925927" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/activity_movie_detail.xml" value="0.33" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/content_main.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_detail_film.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_film_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_gallery.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_home.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_movie_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_movie_favorite.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_movie_favorite_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/fragment_slideshow.xml" value="0.36102564102564105" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/gfg.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/movie.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/movie_item.xml" value="0.33" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/layout/nav_header_main.xml" value="0.15925925925925927" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/menu/activity_main_drawer.xml" value="0.23129251700680273" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/menu/main_activity2.xml" value="0.1574074074074074" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/menu/main_button_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/menu/main_toolbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1945" />
         <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1945" />
+        <entry key="..\:/Users/yutas/AndroidStudioProjects/kinoline/app/src/main/res/xml/root_preferences.xml" value="0.1" />
       </map>
     </option>
   </component>

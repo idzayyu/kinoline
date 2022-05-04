@@ -10,6 +10,7 @@ class MovieDetail() : AppCompatActivity() {
     lateinit var binding: ActivityMovieDetailBinding
     var flag = false
     val movieList = MovieList.getMovieList()
+    val movieFavoriteList = MovieList.getMovieFavoriteList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,13 +19,19 @@ class MovieDetail() : AppCompatActivity() {
 
         val position = intent.getIntExtra("position", 0)
 
+        val isFavorite = intent.getBooleanExtra("IsFavorite",true)
+
         binding.description.text = intent.getStringExtra("desc")
         binding.imageView.setImageResource(intent.getIntExtra("image", 0))
 
         binding.isLike.setOnClickListener{
             flag = !flag
-            movieList[position].isLike = flag
-            Log.d("ASS", movieList[position].isLike.toString())
+            if (isFavorite) {
+                movieFavoriteList[position].isLike = flag
+            }
+            else{
+                movieList[position].isLike = flag
+            }
         }
 
         binding.buttonSaveDetail.setOnClickListener{

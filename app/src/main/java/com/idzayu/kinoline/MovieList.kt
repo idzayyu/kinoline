@@ -9,11 +9,16 @@ object MovieList {
     ,Movie(R.drawable.moneyball, "Moneyball",
             "Фильм по книге Майкла M. Льюиса, изданной в 2003 году, об Оклендской бейсбольной команде и ее генеральном менеджере, Билли Бине. Его цель - создать конкурентоспособную бейсбольную команду, несмотря на финансовые трудности."
         ))
+    private var movieFavoriteList = ArrayList<Movie>()
 
 
     fun getMovieList(): ArrayList<Movie> {
 
         return movieList
+    }
+    fun getMovieFavoriteList(): ArrayList<Movie> {
+
+        return movieFavoriteList
     }
 
     fun addMovie(movie: Movie){

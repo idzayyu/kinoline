@@ -8,4 +8,5 @@ class Movie(imageId: Int, nameFilm: String, description: String) {
     var description: String = description
     var comment: String = ""
     var isLike = false
+    var isfavorite = false
 }
