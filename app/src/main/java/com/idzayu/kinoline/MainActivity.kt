@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -17,7 +18,6 @@ import com.idzayu.kinoline.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity()  {
     lateinit var binding: ActivityMainBinding
-    var  exitIssue = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,13 +61,8 @@ class MainActivity : AppCompatActivity()  {
     }
 
     override fun onBackPressed() {
-        if (exitIssue){
-            exitIssue = false
-            Toast.makeText(applicationContext, "to exit, press again", Toast.LENGTH_LONG).show()
-        }
-        else{
-            super.onBackPressed()
-        }
+        val dialog = ExitDialogFragment()
+        dialog.show(supportFragmentManager,"dialog")
 
     }
 

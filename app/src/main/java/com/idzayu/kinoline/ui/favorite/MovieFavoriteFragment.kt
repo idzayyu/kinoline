@@ -33,6 +33,8 @@ class MovieFavoriteFragment : Fragment() {
         override fun onFavoriteClick(movie: Movie, position: Int) {
             Toast.makeText(activity, "Remove to favorite", Toast.LENGTH_SHORT).show()
             movieList.remove(movie)
+            movie.isLike = false
+            movie.isfavorite = false
         }
 
         override fun onMovieDetailClicked(position: Int) {

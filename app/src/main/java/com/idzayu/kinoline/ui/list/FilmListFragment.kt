@@ -27,14 +27,23 @@ class FilmListFragment : Fragment() {
     private var dataComment = ""
     var dataIsLike = false
 
-    val movieAdapter = MovieAdapter(movieList, object: MovieAdapter.NewsClickListener {
+    private val movieAdapter = MovieAdapter(movieList, object: MovieAdapter.NewsClickListener {
         override fun onNewsClick(movie: Movie, position: Int) {
             Toast.makeText(activity, "Long click 1", Toast.LENGTH_SHORT).show()
         }
 
         override fun onFavoriteClick(movie: Movie, position: Int) {
-            Toast.makeText(activity, "Add to favorite", Toast.LENGTH_SHORT).show()
-            movieFavoriteList.add(movie)
+            if (!movie.isfavorite){
+                movie.isfavorite = true
+                Toast.makeText(activity, "Add to favorite", Toast.LENGTH_SHORT).show()
+                movieFavoriteList.add(movie)
+            }
+            else{
+                Toast.makeText(activity, "Film has already been added to favorites", Toast.LENGTH_SHORT).show()
+            }
+            if (movieList.size > 0){
+                movieList[position].isLike = true
+            }
         }
 
         override fun onMovieDetailClicked(position: Int) {

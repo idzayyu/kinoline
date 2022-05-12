@@ -6,4 +6,8 @@
     <string name="checkBoxLikeFilm">Нравится</string>
     <string name="writeCommet">Напишите свой комментарий</string>
     <string name="buttonSaveDetail">Сохранить</string>
+    <string name="menu_home">Домой</string>
+    <string name="menu_gallery">Галерия</string>
+    <string name="menu_slideshow">Слайдшоу</string>
+    <string name="textExit">Вы хотите выйти из приложения?</string>
 </resources>
