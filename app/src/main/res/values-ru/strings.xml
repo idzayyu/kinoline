@@ -10,4 +10,6 @@
     <string name="menu_gallery">Галерия</string>
     <string name="menu_slideshow">Слайдшоу</string>
     <string name="textExit">Вы хотите выйти из приложения?</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
 </resources>

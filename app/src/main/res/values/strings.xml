@@ -20,4 +20,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="textExit">Do you want to exit the app?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>
