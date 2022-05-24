@@ -10,6 +10,15 @@ object MovieList {
             "Фильм по книге Майкла M. Льюиса, изданной в 2003 году, об Оклендской бейсбольной команде и ее генеральном менеджере, Билли Бине. Его цель - создать конкурентоспособную бейсбольную команду, несмотря на финансовые трудности."
         ))
     private var movieFavoriteList = ArrayList<Movie>()
+    private var positionSelectedMovie = 0
+
+    fun setPositionSelectedMovie(position: Int) {
+        positionSelectedMovie = position
+        }
+
+    fun getPositionSelectedMovie(): Int{
+        return  positionSelectedMovie
+    }
 
 
     fun getMovieList(): ArrayList<Movie> {
@@ -21,7 +30,4 @@ object MovieList {
         return movieFavoriteList
     }
 
-    fun addMovie(movie: Movie){
-        movieList.add(movie)
-    }
 }

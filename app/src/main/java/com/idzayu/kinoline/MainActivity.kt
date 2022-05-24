@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity()  {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,9 +66,10 @@ class MainActivity : AppCompatActivity()  {
 
     override fun onBackPressed() {
         val dialog = ExitDialogFragment()
-        dialog.show(supportFragmentManager,"dialog")
+        dialog.show(supportFragmentManager, "dialog")
 
     }
+
 
 
 }
