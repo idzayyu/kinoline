@@ -12,11 +12,11 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
                    private val listener: NewsClickListener
 ) : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
 
-    class MovieHolder(item: View): RecyclerView.ViewHolder(item) {
+    inner class MovieHolder(item: View): RecyclerView.ViewHolder(item) {
         private val binding = MovieItemBinding.bind(item)
 
 
-        @SuppressLint("ResourceAsColor")
+        @SuppressLint("ResourceAsColor", "NotifyDataSetChanged")
         fun bind(
             position: Int,
             movie: Movie,
@@ -41,6 +41,7 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
 
             artMovie.setOnLongClickListener{
                 listener.onFavoriteClick(movie, position)
+                notifyDataSetChanged()
                 return@setOnLongClickListener true
             }
 
@@ -55,7 +56,9 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
     }
 
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
-        holder.bind(position,movieList[position],listener)
+        if (movieList.size > 0){
+            holder.bind(position,movieList[position],listener)
+        }
 
     }
 

@@ -12,19 +12,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.idzayu.kinoline.Movie
-import com.idzayu.kinoline.MovieDetail
-import com.idzayu.kinoline.MovieList
+import com.idzayu.kinoline.*
 import com.idzayu.kinoline.databinding.FragmentMovieFavoriteBinding
-import com.idzayu.kinoline.MovieAdapter
 
 class MovieFavoriteFragment : Fragment() {
-    private lateinit var start:
-            ActivityResultLauncher<Intent>
     val movieList = MovieList.getMovieFavoriteList()
 
-    private var dataComment = ""
-    var dataIsLike = false
     private val movieAdapter = MovieAdapter(movieList, object: MovieAdapter.NewsClickListener {
         override fun onNewsClick(movie: Movie, position: Int) {
             Toast.makeText(activity, "Long click 1", Toast.LENGTH_SHORT).show()
@@ -33,21 +26,22 @@ class MovieFavoriteFragment : Fragment() {
         override fun onFavoriteClick(movie: Movie, position: Int) {
             Toast.makeText(activity, "Remove to favorite", Toast.LENGTH_SHORT).show()
             movieList.remove(movie)
+            movie.isLike = false
+            movie.isfavorite = false
         }
 
         override fun onMovieDetailClicked(position: Int) {
+            val detailFragment = DetailFilmFragment()
 
-            val intent = Intent(activity, MovieDetail::class.java)
-            intent.putExtra("image",movieList[position].imageId)
-            intent.putExtra("position",position)
-            intent.putExtra("IsFavorite",true)
-            intent.putExtra("desc",movieList[position].description)
+            MovieList.setPositionSelectedMovie(position)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_activity_main,detailFragment)
+                .addToBackStack("Favorite")
+                .commit()
 
-            start.launch(intent)
         }
     })
 
-    private lateinit var viewModel: MovieFavoriteViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,20 +58,7 @@ class MovieFavoriteFragment : Fragment() {
             favoriteRV.layoutManager = GridLayoutManager(activity, 1)
             favoriteRV.adapter = movieAdapter
         }
-        start = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
-            val data = result.data
 
-            if (result.resultCode == AppCompatActivity.RESULT_OK && data != null){
-                dataComment = data.getStringExtra("comment").toString()
-                dataIsLike = data.getBooleanExtra("isLike", false)
-                val position = data.getIntExtra("position",0)
-
-                movieList[position].comment = dataComment
-
-                movieAdapter.notifyDataSetChanged()
-            }
-
-        }
 
     }
 
