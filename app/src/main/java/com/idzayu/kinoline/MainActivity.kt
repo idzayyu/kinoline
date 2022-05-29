@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity()  {
         navView.setupWithNavController(navController)
 
 
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -65,8 +63,12 @@ class MainActivity : AppCompatActivity()  {
     }
 
     override fun onBackPressed() {
-        val dialog = ExitDialogFragment()
-        dialog.show(supportFragmentManager, "dialog")
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStack()
+        } else {
+            val dialog = ExitDialogFragment()
+            dialog.show(supportFragmentManager, "dialog")
+        }
 
     }
 
