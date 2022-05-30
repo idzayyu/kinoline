@@ -42,8 +42,8 @@ class FilmListFragment : Fragment() {
 
             MovieList.setPositionSelectedMovie(position)
             val detailFragment = DetailFilmFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.nav_host_fragment_activity_main,detailFragment)
+            requireActivity().supportFragmentManager.beginTransaction()
+                .add(R.id.nav_host_fragment_activity_main,detailFragment)
                 .addToBackStack("Main")
                 .commit()
 
