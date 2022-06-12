@@ -5,12 +5,17 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.idzayu.kinoline.databinding.MovieItemBinding
 
 class MovieAdapter(private val movieList: ArrayList<Movie>,
                    private val listener: NewsClickListener
 ) : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
+
+    private lateinit var likeAnim: Animation
+
 
     inner class MovieHolder(item: View): RecyclerView.ViewHolder(item) {
         private val binding = MovieItemBinding.bind(item)
@@ -24,6 +29,7 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
         ) = with(binding) {
             artMovie.setImageResource(movie.imageId)
             textView.text = movie.nameFilm
+            likeAnim = AnimationUtils.loadAnimation(imageView2.context,R.anim.show_like)
             if (movie.isSelected) textView.setBackgroundResource(R.color.purple_500)
             if (movie.isLike) {
                 imageLiked.visibility = View.VISIBLE
@@ -40,8 +46,15 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
             }
 
             artMovie.setOnLongClickListener{
+                val river = movie.isfavorite
                 listener.onFavoriteClick(movie, position)
-                notifyDataSetChanged()
+                if (!river){
+                    imageView2.startAnimation(likeAnim)
+                    imageLiked.visibility = View.VISIBLE
+                }
+                else {
+                    notifyDataSetChanged()
+                }
                 return@setOnLongClickListener true
             }
 
