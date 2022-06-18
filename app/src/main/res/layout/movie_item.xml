@@ -3,64 +3,85 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:background="@drawable/backrec"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/custom_all"
+    android:padding="15dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/custom_all"
-        android:orientation="vertical"
-        android:padding="15dp"
+    <ImageView
+        android:id="@+id/artMovie"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <ImageView
-            android:id="@+id/artMovie"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/artMovie"
+        app:layout_constraintEnd_toEndOf="@+id/artMovie"
+        app:layout_constraintStart_toStartOf="@+id/artMovie"
+        app:layout_constraintTop_toTopOf="@+id/artMovie"
+        app:srcCompat="@drawable/heart_like" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:text="@string/textview"
+        android:textColor="#009688"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDetail"
+        app:layout_constraintEnd_toEndOf="@+id/artMovie"
+        app:layout_constraintStart_toStartOf="@+id/artMovie"
+        app:layout_constraintTop_toBottomOf="@+id/artMovie" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button"
+        android:text="@string/buttonDetail"
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/buttonDetail"
+        app:layout_constraintStart_toStartOf="@+id/buttonDetail"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDetail">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="#009688"
-            android:text="@string/textview" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonDetail"
-            android:layout_width="match_parent"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:text="@string/buttonDetail"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#009688"
+            android:visibility="gone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#009688"
-                android:text="TextView"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/imageLiked"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:visibility="gone"
-                app:srcCompat="@drawable/heart_like" />
-        </LinearLayout>
-
+        <ImageView
+            android:id="@+id/imageLiked"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:stateListAnimator="@animator/state_view"
+            android:layout_weight="1"
+            android:visibility="gone"
+            app:srcCompat="@drawable/heart_like" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
