@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/backrec"
-    tools:context=".ExitDialogFragment">
+    tools:context=".ui.exit.ExitDialogFragment">
 
     <TextView
         android:id="@+id/textView3"

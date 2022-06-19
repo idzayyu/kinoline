@@ -27,7 +27,7 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
             movie: Movie,
             listener: NewsClickListener
         ) = with(binding) {
-            artMovie.setImageResource(movie.imageId)
+            artMovie.setImageResource(R.drawable.moneyball)
             textView.text = movie.nameFilm
             likeAnim = AnimationUtils.loadAnimation(imageView2.context,R.anim.show_like)
             if (movie.isSelected) textView.setBackgroundResource(R.color.purple_500)

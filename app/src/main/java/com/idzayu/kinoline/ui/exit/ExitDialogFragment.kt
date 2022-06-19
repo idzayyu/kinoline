@@ -1,4 +1,4 @@
-package com.idzayu.kinoline
+package com.idzayu.kinoline.ui.exit
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
