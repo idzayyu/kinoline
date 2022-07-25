@@ -28,7 +28,7 @@ class App: Application() {
 
             val request = original.newBuilder()
                 .addHeader("accept", "application/json")
-                .addHeader("X-API-KEY", "5639732c-5158-4165-a184-78bc62fd9fe2")
+                .addHeader("X-API-KEY", "d75c0856-d389-403e-b789-dc35213e8be4")
                 .build()
             // 0 - d75c0856-d389-403e-b789-dc35213e8be4
             // 1 - 5639732c-5158-4165-a184-78bc62fd9fe2
