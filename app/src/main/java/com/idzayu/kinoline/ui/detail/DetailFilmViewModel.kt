@@ -1,13 +1,13 @@
 package com.idzayu.kinoline.ui.detail
 
 import androidx.lifecycle.ViewModel
-import com.idzayu.kinoline.MovieList
+import com.idzayu.kinoline.model.movies.Repository.MovieList
 
 class DetailFilmViewModel :  ViewModel() {
 
     var flag = false
     private var position = MovieList.getPositionSelectedMovie()
-    private val movieList = MovieList.getMovieList()
+    private val movieList = MovieList.movieList
     private val isFavorite = movieList[position].isfavorite
     private val movieFavoriteList = MovieList.getMovieFavoriteList()
 
@@ -15,7 +15,7 @@ class DetailFilmViewModel :  ViewModel() {
         return movieList[position].description
     }
     fun getImageId(): String {
-        return movieList[position].imageId
+        return movieList[position].imageUrl
     }
     fun onClickLike(){
         flag = !flag

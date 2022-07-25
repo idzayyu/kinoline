@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.idzayu.kinoline.R
 import com.idzayu.kinoline.databinding.FragmentDetailFilmBinding
 
@@ -24,9 +25,13 @@ class DetailFilmFragment : Fragment() {
     private fun init(binding: FragmentDetailFilmBinding) {
        dfvm = ViewModelProvider(this)[DetailFilmViewModel::class.java]
        binding.description.text = dfvm.getDescriptionText()
-       binding.artMovie.setImageResource(R.drawable.moneyball)
-       binding.isLike.setOnClickListener{
-           dfvm.onClickLike()
+        Glide.with(binding.artMovie)
+            .load(dfvm.getImageId())
+            .placeholder(android.R.drawable.ic_popup_sync)
+            .error(android.R.drawable.stat_notify_error)
+            .into(binding.artMovie)
+        binding.isLike.setOnClickListener{
+        dfvm.onClickLike()
        }
 
        binding.buttonSaveDetail.setOnClickListener{

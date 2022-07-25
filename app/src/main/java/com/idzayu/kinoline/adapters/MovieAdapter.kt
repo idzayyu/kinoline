@@ -1,13 +1,16 @@
-package com.idzayu.kinoline
+package com.idzayu.kinoline.adapters
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.idzayu.kinoline.model.movies.Movie
+import com.idzayu.kinoline.R
 import com.idzayu.kinoline.databinding.MovieItemBinding
 
 class MovieAdapter(private val movieList: ArrayList<Movie>,
@@ -21,15 +24,20 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
         private val binding = MovieItemBinding.bind(item)
 
 
-        @SuppressLint("ResourceAsColor", "NotifyDataSetChanged")
+        @SuppressLint("ResourceAsColor", "NotifyDataSetChanged", "ResourceType")
         fun bind(
             position: Int,
             movie: Movie,
             listener: NewsClickListener
         ) = with(binding) {
-            artMovie.setImageResource(R.drawable.moneyball)
+            Glide.with(artMovie)
+                .load(movie.imageUrl)
+                .placeholder(android.R.drawable.ic_popup_sync)
+                .error(android.R.drawable.stat_notify_error)
+                .into(artMovie)
+
             textView.text = movie.nameFilm
-            likeAnim = AnimationUtils.loadAnimation(imageView2.context,R.anim.show_like)
+            likeAnim = AnimationUtils.loadAnimation(imageView2.context, R.anim.show_like)
             if (movie.isSelected) textView.setBackgroundResource(R.color.purple_500)
             if (movie.isLike) {
                 imageLiked.visibility = View.VISIBLE
@@ -78,6 +86,7 @@ class MovieAdapter(private val movieList: ArrayList<Movie>,
     override fun getItemCount(): Int {
         return movieList.size
     }
+
 
     interface NewsClickListener{
         fun onNewsClick(movie: Movie, position: Int)

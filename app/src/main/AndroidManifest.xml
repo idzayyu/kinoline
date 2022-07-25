@@ -5,7 +5,7 @@
 
 
     <application
-        android:name=".App"
+        android:name="com.idzayu.kinoline.model.movies.Repository.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Kinoline">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

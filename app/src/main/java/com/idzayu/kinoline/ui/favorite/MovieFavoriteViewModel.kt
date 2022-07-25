@@ -1,8 +1,7 @@
 package com.idzayu.kinoline.ui.favorite
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import com.idzayu.kinoline.Movie
-import com.idzayu.kinoline.MovieList
+import com.idzayu.kinoline.model.movies.Movie
+import com.idzayu.kinoline.model.movies.Repository.MovieList
 
 class MovieFavoriteViewModel:  ViewModel() {
     val movieList = MovieList.getMovieFavoriteList()

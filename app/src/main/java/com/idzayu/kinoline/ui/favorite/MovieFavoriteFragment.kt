@@ -10,7 +10,10 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.idzayu.kinoline.*
+import com.idzayu.kinoline.model.movies.Repository.MovieList
+import com.idzayu.kinoline.adapters.MovieAdapter
 import com.idzayu.kinoline.databinding.FragmentMovieFavoriteBinding
+import com.idzayu.kinoline.model.movies.Movie
 import com.idzayu.kinoline.ui.detail.DetailFilmFragment
 
 class MovieFavoriteFragment : Fragment() {
