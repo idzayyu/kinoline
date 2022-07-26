@@ -7,6 +7,7 @@ import androidx.paging.cachedIn
 import com.idzayu.kinoline.model.movies.Movie
 import com.idzayu.kinoline.model.movies.Repository.ApiMovieRepository
 import com.idzayu.kinoline.model.movies.Repository.MovieList
+import com.idzayu.kinoline.model.movies.Repository.MovieRepositories
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,7 +21,7 @@ class FilmListViewModel(): ViewModel() {
     private val movieList = MovieList.movieList
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 
-    private val movieRepository = ApiMovieRepository(ioDispatcher)
+    private val movieRepository : MovieRepositories = ApiMovieRepository(ioDispatcher)
     val moviesFlow: Flow<PagingData<Movie>> = movieRepository.getPagedMovie().cachedIn(viewModelScope)
 
     fun onFavoriteClick(movie: Movie, position: Int): Boolean {

@@ -19,7 +19,6 @@ class ApiMovieRepository(
 ) : MovieRepositories {
 
     private val enableErrorsFlow = MutableStateFlow(false)
-
     override fun isErrorsEnabled(): Flow<Boolean> = enableErrorsFlow
 
     override fun setErrorsEnabled(value: Boolean) {
@@ -36,31 +35,45 @@ class ApiMovieRepository(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { MoviePagingSource(loader, PAGE_SIZE) }
-        ).flow    }
+        ).flow
+    }
 
     private suspend fun getMovies(pageIndex: Int, pageSize: Int)
             = withContext(ioDispatcher) {
 
         if (enableErrorsFlow.value) throw IllegalStateException("Error!")
         var pageIndexV = pageIndex
-        while (pageIndexV < pageIndex + pageSize) {
-            getPageMovie(pageIndexV)
-            pageIndexV++
-        }
-        Log.d("ssasdas", pageIndexV.toString())
-        Log.d("ssasdas", pageIndex.toString())
-        Log.d("ssasdas", (MovieList.movieList.size - (pageIndexV - pageIndex - 1)).toString())
-        Log.d("ssasdas", MovieList.movieList.size.toString())
-        Log.d("ssasdas", MovieList.movieList.subList(
-            MovieList.movieList.size - (pageIndexV - pageIndex - 1),
-            MovieList.movieList.size
-        ).size.toString())
 
-        MovieList.setPageIndex(pageIndexV)
-        return@withContext MovieList.movieList.subList(
-            MovieList.movieList.size - (pageIndexV - pageIndex - 1),
-            MovieList.movieList.size
-        )
+        val a = MovieList.movieList.size
+        val list = ArrayList<Movie>()
+
+        if (pageIndex == 301) {
+            while (pageIndexV < pageIndex + pageSize) {
+                getPageMovie(pageIndexV)
+                pageIndexV++
+            }
+            var nullMovie = 0
+            while (MovieList.movieList.size % 5 != 0) {
+                getPageMovie(pageIndexV)
+                pageIndexV++
+                nullMovie++
+            }
+            if (MovieList.movieList.size == a) pageIndexV = pageIndex
+            list.addAll(MovieList.movieList.subList(
+                MovieList.movieList.size - (pageIndexV - pageIndex - nullMovie),
+                MovieList.movieList.size
+            ))
+            //MovieList.setPageIndex(pageIndexV)
+        } else{
+            list.addAll(MovieList.movieList.subList(
+                0,
+                MovieList.movieList.size
+            ))
+        }
+
+
+
+        return@withContext list
     }
 
     private suspend fun getPageMovie(pageIndex: Int){
@@ -80,6 +93,7 @@ class ApiMovieRepository(
                     }
                 }
                 override fun onFailure(call: Call<MovieModel>, t: Throwable) {
+                    return
                 }
             })
     }

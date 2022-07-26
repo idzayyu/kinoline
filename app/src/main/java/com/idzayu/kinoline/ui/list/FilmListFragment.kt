@@ -136,8 +136,8 @@ class FilmListFragment : Fragment() {
         //   OR
         // (before prev state = Error, prev state = NotLoading, current state = Loading)
         getRefreshLoadStateFlow(adapter)
-            .simpleScan(count = 3)
-            .collectLatest { (beforePrevious, previous, current) ->
+            .simpleScan(count = 5)
+            .collectLatest { (_, _, beforePrevious, previous, current) ->
                 binding.recyclerView.isInvisible = current is LoadState.Error
                         || previous is LoadState.Error
                         || (beforePrevious is LoadState.Error && previous is LoadState.NotLoading

@@ -20,7 +20,8 @@ import kotlinx.coroutines.FlowPreview
 
 class MovieListAdapter(private val listener: NewsClickListener
 ): PagingDataAdapter<Movie, MovieListAdapter.MovieHolder>(MovieDiffCallback()) {
-    class MovieHolder(private val binding: MovieItemBinding): RecyclerView.ViewHolder(binding.root) {
+
+    class MovieHolder(private val binding: MovieItemBinding): RecyclerView.ViewHolder(binding.root){
         private lateinit var likeAnim: Animation
 
         fun bind(movie: Movie,
@@ -99,7 +100,6 @@ class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
         return oldItem.id == newItem.id
     }
 
-    @SuppressLint("DiffUtilEquals")
     override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }

@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity()  {
         return true
     }
 
-    override fun onDestroy() {
+
+    override fun onStop() {
         Executors.newSingleThreadExecutor().execute {
             Runnable {
                 val appDb = AppDataBase.getInstance(this)?.getMovieDao()
@@ -78,9 +79,8 @@ class MainActivity : AppCompatActivity()  {
                 appDb?.insertFavorite(MovieList.getMovieFavoriteEntity())
             }.run()
         }
-        super.onDestroy()
+        super.onStop()
     }
-
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()

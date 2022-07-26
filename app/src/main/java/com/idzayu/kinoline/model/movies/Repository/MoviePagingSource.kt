@@ -1,5 +1,6 @@
 package com.idzayu.kinoline.model.movies.Repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.idzayu.kinoline.model.movies.Movie
@@ -14,16 +15,14 @@ class MoviePagingSource(
     private val pageSize: Int
 ): PagingSource<Int, Movie>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movie> {
-        val pageIndex = MovieList.getPageIndex()
+        val pageIndex = params.key ?: MovieList.getPageIndex()
+        Log.d("ssasdas", pageIndex.toString())
         return try {
             val movieList =  loader.invoke(pageIndex , params.loadSize)
             return LoadResult.Page(
                 data = movieList
-                ,prevKey = if(pageIndex == MovieList.getPageIndex() - pageSize * 3) null
-                else pageIndex - pageSize
+                ,prevKey = if(pageIndex == MovieList.getPageIndex() ) null else pageIndex - pageSize
                 ,nextKey =  pageIndex + pageSize
-                ,0
-                ,10
             )
         } catch (e: Exception){
             LoadResult.Error(
