@@ -1,20 +1,26 @@
-package com.idzayu.kinoline
+package com.idzayu.kinoline.ui.main
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.idzayu.kinoline.R
 import com.idzayu.kinoline.databinding.ActivityMainBinding
+import com.idzayu.kinoline.model.movies.Movie
+import com.idzayu.kinoline.model.movies.Repository.ApiMovieRepository
+import com.idzayu.kinoline.model.movies.Repository.MovieList
+import com.idzayu.kinoline.model.movies.Repository.room.AppDataBase
+import com.idzayu.kinoline.ui.exit.ExitDialogFragment
+import java.util.concurrent.Executors
 
 
 class MainActivity : AppCompatActivity()  {
@@ -24,6 +30,8 @@ class MainActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         val navView: BottomNavigationView = binding.navView
 
@@ -62,6 +70,17 @@ class MainActivity : AppCompatActivity()  {
         return true
     }
 
+
+    override fun onStop() {
+        Executors.newSingleThreadExecutor().execute {
+            Runnable {
+                val appDb = AppDataBase.getInstance(this)?.getMovieDao()
+                appDb?.insert(MovieList.getMovieEntity())
+                appDb?.insertFavorite(MovieList.getMovieFavoriteEntity())
+            }.run()
+        }
+        super.onStop()
+    }
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
