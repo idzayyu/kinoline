@@ -23,12 +23,12 @@
 
                 <ImageView
                     android:id="@+id/artMovie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="400dp"
+                    android:layout_height="300dp"
                     android:adjustViewBounds="true"
+                    android:contentDescription="TODO"
                     android:src="@drawable/grand_budapest_hotel"
-                    app:layout_collapseMode="parallax"
-                    android:contentDescription="TODO" />
+                    app:layout_collapseMode="parallax" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
